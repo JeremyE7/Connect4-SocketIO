@@ -1,14 +1,34 @@
 .board{
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    grid-gap: 20px;
+    grid-gap: 25px;
     background-color: var(--secondary);
     width: 500px;
-    height: 500px;
+    height: 350px;
     border-radius: 0.5rem;
-    padding: 50px;
+    padding: 40px;
     box-shadow: 0 0 1rem 0 rgba(0, 0, 0, 0.2);
+    padding-left: 70px;
+    
+}
 
+header{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+
+    
+}
+
+header h1{
+    font-size: 3rem;
+    margin-bottom: -25px;
+    
+}
+
+header h2{
+    color: var(--accent);
 }
 
 .square{
@@ -17,13 +37,14 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100px;
-    width: 100px;
+    height: 70px;
+    width: 70px;
 }
 
 .game-menu{
     width: 100%;
-    
+    display: flex;
+    justify-content: center;
 }
 
 .general-board{
@@ -35,8 +56,22 @@
 }
 
 .players{
-    margin-top: 25vh;
-    width: 100px;
+    margin-top: 5vh;
+    width: 190px;
+    font-size: 2rem;
+    text-align: left;
+}
+
+.players h2{
+    
+    text-align: left;
+    margin-bottom: 0px;
+}
+
+.players span{
+    font-size: 1.5rem;
+    text-align: left;
+    width: 100%;
 }
 
 .square:hover{
@@ -46,6 +81,141 @@
 
 .turn{
     display: flex;
-    margin-top: 25vh;
-    width: 100px;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 10vh;
+    font-size: 2rem;
+    width: 190px;
 }
+
+.turn h2{
+    text-align: left;
+    margin-bottom: 0px;
+}
+
+.turn span{
+    font-size: 1.5rem;
+    width: 100%;
+}
+
+.winner{
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+    font-size: 5rem;
+    color: var(--accent);
+    background-color: rgb(255, 255, 255, 0.98);
+}
+
+
+.loader {
+    width: 100px;
+    height: 100px;
+    border: 3px solid #FFF;
+    border-radius: 50%;
+    display: inline-block;
+    position: relative;
+    box-sizing: border-box;
+    animation: rotation 1s linear infinite;
+  } 
+  .loader::after {
+    content: '';  
+    box-sizing: border-box;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    border: 3px solid transparent;
+    border-bottom-color: #FF3D00;
+  }
+  
+  @keyframes rotation {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  } 
+
+  form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 70px;
+    background-color: var(--background);
+    padding: 50px;
+    border-radius: 5px;
+    box-shadow: 0 0 1rem 0 rgba(0, 0, 0, 0.2);
+    width: fit-content; 
+  }
+
+  form label{
+    margin-bottom: 10px;
+    display: flex;
+    text-align: left;
+    flex-direction: column;
+    font-size: 1.5rem;
+  }
+
+  form label input{
+    width: 300px;
+    height: 30px;
+    border-radius: 5px;
+    border: 1px solid var(--accent);
+    font-size: 1.5rem;
+    padding-left: 10px;
+    margin-top: 10px;
+  }
+
+  .btn-search-game{
+    border-radius: 5px;
+    border: 1px solid var(--accent);
+    font-size: 1.5rem;
+    padding: 10px;
+    margin-top: 20px;
+    background-color: var(--accent);
+    cursor: pointer;
+
+  }
+
+  .btn-play-again{
+    border-radius: 5px;
+    font-size: 1.5rem;
+    padding: 10px;
+    margin-top: -50px;
+    background-color: var(--secondary);
+    cursor: pointer;
+  }
+
+  a{
+    text-decoration: none;
+  }
+  
+  @media screen and (max-width: 790px) {
+    .general-board{
+        flex-direction: column-reverse;
+        padding-left: 50px;
+    }
+
+    .board{
+        order: 1;
+        margin-bottom: -100px;
+    }
+
+    .players{
+        position: absolute;
+        top: 522px;
+        left: 450px;
+    }
+    
+  }

@@ -6,6 +6,7 @@ const socket = io('http://localhost:4000')
 const useGame = () => {
   const [game, setGame] = useState(null)
   const [winner, setWinner] = useState(null)
+  const [playerLeave, setPlayerLeave] = useState(false)
 
   useEffect(() => {
     if (game) return
@@ -16,6 +17,7 @@ const useGame = () => {
 
     socket.on('game-created', (game) => {
       console.log('Juego creado', game)
+      setPlayerLeave(false)
       setGame(game)
     })
 
@@ -33,6 +35,17 @@ const useGame = () => {
       console.log('Ganador verificado', winner)
       setWinner(winner)
     })
+
+    socket.on('player-disconnected', () => {
+      console.log('Jugador abandono la partida')
+      setPlayerLeave(true)
+      setGame(null)
+    })
+
+    socket.on('tie', () => {
+      console.log('Empate')
+      setWinner('tie')
+    })
   }, [])
 
   const searchGame = (name) => {
@@ -45,7 +58,7 @@ const useGame = () => {
     socket.emit('check-winner', gameId)
   }
 
-  return { game, searchGame, addPiece, winner }
+  return { game, searchGame, addPiece, winner, playerLeave, setPlayerLeave }
 }
 
 export default useGame

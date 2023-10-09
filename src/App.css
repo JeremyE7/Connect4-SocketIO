@@ -1,0 +1,51 @@
+.board{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 20px;
+    background-color: var(--secondary);
+    width: 500px;
+    height: 500px;
+    border-radius: 0.5rem;
+    padding: 50px;
+    box-shadow: 0 0 1rem 0 rgba(0, 0, 0, 0.2);
+
+}
+
+.square{
+    background-color: var(--accent);
+    border-radius: 1000px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100px;
+    width: 100px;
+}
+
+.game-menu{
+    width: 100%;
+    
+}
+
+.general-board{
+    display: flex;
+    width: 100%;
+    height: 100%;
+    justify-content: space-around;
+    align-self: center;   
+}
+
+.players{
+    margin-top: 25vh;
+    width: 100px;
+}
+
+.square:hover{
+    background-color: var(--primary);
+    cursor: pointer;
+}
+
+.turn{
+    display: flex;
+    margin-top: 25vh;
+    width: 100px;
+}

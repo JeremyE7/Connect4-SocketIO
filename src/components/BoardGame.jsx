@@ -4,7 +4,7 @@ const BoardGame = ({ game, addPiece }) => {
   return (
     <section className='general-board'>
       <label htmlFor="" className='players'>
-        <h2>Players:</h2>
+        <h2>Players</h2><br />
         {game.players.map((player) => {
           return <span style={{ color: game.players.indexOf(player) === 0 ? 'red' : 'blue' }} key={player.id_player}>{player.name} <br /></span>
         })}

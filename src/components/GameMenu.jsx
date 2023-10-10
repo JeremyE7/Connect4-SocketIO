@@ -1,3 +1,4 @@
+import Confetti from 'react-confetti'
 import useGame from '../hooks/useGame'
 import BoardGame from './BoardGame'
 import SearchGame from './SearchGame'
@@ -26,6 +27,7 @@ const GameMenu = () => {
             {winner !== 'tie'
               ? <span style={{ color: winner }}>
                 {winner === 'red' ? 'Rojo' : 'Azul'}
+                <Confetti/>
               </span>
               : null}
           </h2>

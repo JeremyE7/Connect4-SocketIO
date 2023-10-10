@@ -31,6 +31,7 @@ const GameMenu = () => {
               </span>
               : null}
           </h2>
+          <BoardGame game={game} small={true}/>
           <button className='btn-play-again'>
             <a href='/'>Volver a jugar</a>
           </button>

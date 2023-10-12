@@ -1,7 +1,9 @@
-import Confetti from 'react-confetti'
 import useGame from '../hooks/useGame'
 import BoardGame from './BoardGame'
 import SearchGame from './SearchGame'
+import Loader from './Loader'
+import WinnerVIew from './WinnerVIew'
+import PlayerLeaveVIew from './PlayerLeaveVIew'
 
 const GameMenu = () => {
   const { searchGame, game, addPiece, winner, playerLeave } = useGame()
@@ -17,38 +19,17 @@ const GameMenu = () => {
       {!game
         ? (<SearchGame handleSubmit={handleSubmit} />)
         : (game.players.length < 2
-            ? (<div className='winner'><span className="loader"></span> Esperando a otro jugador</div>)
+            ? <Loader />
             : <BoardGame game={game} addPiece={addPiece} />
-          )}
-      {winner && (
-        <div className='winner'>
-          <h2>
-            {winner !== 'tie' ? 'El ganador es' : 'Empate'} <br />
-            {winner !== 'tie'
-              ? <span style={{ color: winner }}>
-                {winner === 'red' ? 'Rojo' : 'Azul'}
-                <Confetti/>
-              </span>
-              : null}
-          </h2>
-          <BoardGame game={game} small={true}/>
-          <button className='btn-play-again'>
-            <a href='/'>Volver a jugar</a>
-          </button>
-        </div>
-      )}
-      {playerLeave
-        ? (
-          <div className='winner'>
-            <h2>
-              El otro jugador se ha ido <br />
-            </h2>
-            <button className='btn-play-again'>
-              <a href='/'>Volver a jugar</a>
-            </button>
-          </div>
           )
-        : null}
+      }
+
+      {winner && <WinnerVIew game={game} winner={winner}/>}
+
+      {playerLeave
+        ? <PlayerLeaveVIew />
+        : null
+      }
     </section>
   )
 }
